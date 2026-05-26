@@ -3,21 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles/style.scss" />
-    <link rel="stylesheet" href="styles/mobile.scss" />
+    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="styles/mobile.css" />
     <link rel="icon" type="image/x-icon" href="assets/icons/logo.svg" />
     <title>GrowFlow</title>
   </head>
   <body>
-    <header class="container">
-      <nav>
-        <ul>
-          <li><a></a></li>
-        </ul>
-      </nav>
+    <header>
+      <div class="container container-header">
+        <a href="index.html">
+          <img src="assets/icons/logo.svg" alt="logo" />
+          GrowFlow
+        </a>
+        <nav>
+          <ul>
+            <li><a href="#">Garden</a></li>
+            <li><a href="#">Methods</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="register.html">Get Started</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
     <main>
+      <section class="hero-section">
+        <div class="container hero-inner">
+          <div class="left-side-hero">
+            <div><p class="special_p">Nature your daily progress</p></div>
+            <h1>Cultivate focus,</h1>
+            <span>harvest productivity.</span>
+            <p>
+              GrowFlow transforms your to-do list into a thriving digital<br />
+              ecosystem. Manage tasks with intentionality and let our AI<br />
+              coach guide your growth.
+            </p>
+            <div class="hero-actions">
+              <a href="#" class="btn-primary">Plant your first seed</a>
+              <a href="#" class="btn-secondary">How it works</a>
+            </div>
+          </div>
+          <div class="right-side-hero">
+            <div class="glow"></div>
+            <model-viewer
+              src="assets/models/desk_plant.glb"
+              camera-controls
+              auto-rotate
+              loading="eager"
+              reveal="auto"
+            ></model-viewer>
+          </div>
+        </div>
+      </section>
+      <section></section>
+      <section></section>
       <section></section>
     </main>
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
   </body>
 </html>
