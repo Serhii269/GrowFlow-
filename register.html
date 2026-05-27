@@ -3,7 +3,153 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GrowFlow/Login-Register</title>
+    <link rel="stylesheet" href="styles/register.css" />
+    <link rel="icon" type="image/x-icon" href="assets/icons/logo.svg" />
+    <title>GrowFlow — Register</title>
   </head>
-  <body></body>
+  <body>
+    <div class="auth-layout">
+      <div class="auth-left">
+        <a href="index.html" class="auth-back">
+          <img src="assets/icons/logo.svg" alt="logo" />
+          GrowFlow
+        </a>
+
+        <div class="auth-left-content">
+          <h1>
+            <span class="text-green">Cultivate better</span><br />
+            <span class="text-green">habits,</span><br />
+            <span class="text-dark">one day at</span><br />
+            <span class="text-dark">a time.</span>
+          </h1>
+        </div>
+
+        <div class="auth-left-image">
+          <img src="assets/images/register-plant.png" alt="plant" />
+        </div>
+      </div>
+
+      <div class="auth-right">
+        <div class="auth-tabs">
+          <button
+            class="auth-tab active"
+            id="tab-register"
+            onclick="switchTab('register')"
+          >
+            Register
+          </button>
+          <button class="auth-tab" id="tab-login" onclick="switchTab('login')">
+            Log in
+          </button>
+        </div>
+
+        <div class="auth-form-wrap" id="form-register">
+          <div class="auth-form-header">
+            <h2>Create Account</h2>
+            <p>Step into your new growth journey.</p>
+          </div>
+
+          <form class="auth-form" action="register.php" method="POST">
+            <div class="auth-field">
+              <label for="reg-name">Full Name</label>
+              <input
+                type="text"
+                id="reg-name"
+                name="name"
+                placeholder="John Green"
+                required
+              />
+            </div>
+            <div class="auth-field">
+              <label for="reg-email">Email Address</label>
+              <input
+                type="email"
+                id="reg-email"
+                name="email"
+                placeholder="john@example.com"
+                required
+              />
+            </div>
+            <div class="auth-field">
+              <label for="reg-password">Password</label>
+              <input
+                type="password"
+                id="reg-password"
+                name="password"
+                placeholder="••••••••"
+                required
+              />
+            </div>
+            <div class="auth-checkbox">
+              <input type="checkbox" id="terms" name="terms" required />
+              <label for="terms">
+                I agree to the <a href="#">Terms of Service</a> and
+                <a href="#">Privacy Policy</a>.
+              </label>
+            </div>
+            <button type="submit" class="auth-btn">Create Account</button>
+            <p class="auth-switch">
+              Already have an account?
+              <a href="#" onclick="switchTab('login')">Log in</a>
+            </p>
+          </form>
+        </div>
+
+        <div class="auth-form-wrap hidden" id="form-login">
+          <div class="auth-form-header">
+            <h2>Welcome back</h2>
+            <p>Continue growing where you left off.</p>
+          </div>
+
+          <form class="auth-form" action="login.php" method="POST">
+            <div class="auth-field">
+              <label for="login-email">Email Address</label>
+              <input
+                type="email"
+                id="login-email"
+                name="email"
+                placeholder="john@example.com"
+                required
+              />
+            </div>
+            <div class="auth-field">
+              <label for="login-password">Password</label>
+              <input
+                type="password"
+                id="login-password"
+                name="password"
+                placeholder="••••••••"
+                required
+              />
+            </div>
+            <div class="auth-forgot">
+              <a href="#">Forgot password?</a>
+            </div>
+            <button type="submit" class="auth-btn">Log in</button>
+            <p class="auth-switch">
+              Don't have an account?
+              <a href="#" onclick="switchTab('register')">Register</a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function switchTab(tab) {
+        document
+          .getElementById("form-register")
+          .classList.toggle("hidden", tab !== "register");
+        document
+          .getElementById("form-login")
+          .classList.toggle("hidden", tab !== "login");
+        document
+          .getElementById("tab-register")
+          .classList.toggle("active", tab === "register");
+        document
+          .getElementById("tab-login")
+          .classList.toggle("active", tab === "login");
+      }
+    </script>
+  </body>
 </html>

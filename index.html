@@ -9,6 +9,21 @@
     <title>GrowFlow</title>
   </head>
   <body>
+    <div class="preloader" id="preloader">
+      <div class="pl-plant">
+        <div class="pl-dot"></div>
+        <div class="pl-stem-wrap">
+          <div class="pl-leaf-left"></div>
+          <div class="pl-stem"></div>
+          <div class="pl-leaf-right"></div>
+        </div>
+      </div>
+      <div class="pl-title">Grow<span>Flow</span></div>
+      <div class="pl-bar-wrap">
+        <div class="pl-bar"></div>
+      </div>
+      <p class="pl-hint">cultivating your garden…</p>
+    </div>
     <header>
       <div class="container container-header">
         <a href="index.html">
@@ -54,13 +69,116 @@
           </div>
         </div>
       </section>
-      <section></section>
-      <section></section>
-      <section></section>
+
+      <section class="features-section container">
+        <div class="features-section-text">
+          <h2>Rooted in Mindfulness</h2>
+          <p>
+            We've reimagined productivity as a biological process. No more
+            high-pressure mechanical output—just natural, steady growth.
+          </p>
+        </div>
+        <div class="features-section-details">
+          <div class="features-card">
+            <img
+              src="assets/images/features-image-left.png"
+              class="features-card-icon"
+              width="64"
+              height="64"
+              alt="Organic Task Tracking"
+            />
+            <p class="features-card-title">Organic Task Tracking</p>
+            <span class="features-card-desc">
+              Your tasks are seeds. As you progress, they sprout and bloom. See
+              your week's accomplishments as a flourishing garden bed instead of
+              a crossed-out list.
+            </span>
+            <div class="features-progress">
+              <div class="features-progress-header">
+                <span class="features-progress-label">Deep Focus Project</span>
+                <span class="features-progress-percent">85% Grown</span>
+              </div>
+              <div class="features-progress-bar">
+                <div class="features-progress-fill" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="features-card">
+            <img
+              src="assets/images/features-image-right.png"
+              class="features-card-icon"
+              width="64"
+              height="64"
+              alt="AI Gardener's Assistant"
+            />
+            <p class="features-card-title">AI Gardener's Assistant</p>
+            <span class="features-card-desc">
+              Our intuitive AI observes your patterns and suggests "watering"
+              (attention) or "pruning" (simplification) for your projects to
+              ensure healthy progress without burnout.
+            </span>
+            <div class="features-ai-comment">
+              <span class="features-ai-label">AI Insight</span>
+              <p class="features-ai-text">
+                "You've been nurturing 'Project Ivy' for 4 hours. It's time for
+                a short walk to keep the ideas fresh."
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <img src="assets/icons/logo.svg" alt="logo" />
+            GrowFlow
+          </a>
+          <p class="footer-tagline">
+            Grow your tasks.<br />Harvest your goals.
+          </p>
+        </div>
+        <nav class="footer-nav">
+          <div class="footer-nav-col">
+            <span class="footer-nav-title">Product</span>
+            <a href="#">Garden</a>
+            <a href="#">Methods</a>
+            <a href="#">AI Assistant</a>
+          </div>
+          <div class="footer-nav-col">
+            <span class="footer-nav-title">Company</span>
+            <a href="#">About</a>
+            <a href="#">Blog</a>
+            <a href="#">Contact</a>
+          </div>
+          <div class="footer-nav-col">
+            <span class="footer-nav-title">Legal</span>
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+          </div>
+        </nav>
+
+        <div class="footer-copy">
+          <p>© 2025 GrowFlow</p>
+          <p>Made with care for your growth.</p>
+        </div>
+      </div>
+    </footer>
     <script
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
+    <script>
+      window.addEventListener("load", () => {
+        setTimeout(() => {
+          const pl = document.getElementById("preloader");
+          pl.style.opacity = "0";
+          pl.style.transition = "opacity 0.5s ease";
+          setTimeout(() => (pl.style.display = "none"), 500);
+        }, 3200);
+      });
+    </script>
   </body>
 </html>

@@ -1,44 +1,37 @@
 @font-face {
-  font-family: "Ranade-Thin";
-  src: url("../fonts/Ranade-Thin.woff2") format("woff2"), url("../fonts/Ranade-Thin.woff") format("woff"), url("../fonts/Ranade-Thin.ttf") format("truetype");
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Thin.woff2") format("woff2"), url("../assets/fonts/Ranade-Thin.woff") format("woff");
   font-weight: 100;
-  font-display: swap;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
-  font-family: "Ranade-Light";
-  src: url("../fonts/Ranade-Light.woff2") format("woff2"), url("../fonts/Ranade-Light.woff") format("woff"), url("../fonts/Ranade-Light.ttf") format("truetype");
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Light.woff2") format("woff2"), url("../assets/fonts/Ranade-Light.woff") format("woff");
   font-weight: 300;
-  font-display: swap;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
-  font-family: "Ranade-Regular";
-  src: url("../fonts/Ranade-Regular.woff2") format("woff2"), url("../fonts/Ranade-Regular.woff") format("woff"), url("../fonts/Ranade-Regular.ttf") format("truetype");
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Regular.woff2") format("woff2"), url("../assets/fonts/Ranade-Regular.woff") format("woff");
   font-weight: 400;
-  font-display: swap;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
-  font-family: "Ranade-Medium";
-  src: url("../fonts/Ranade-Medium.woff2") format("woff2"), url("../fonts/Ranade-Medium.woff") format("woff"), url("../fonts/Ranade-Medium.ttf") format("truetype");
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Medium.woff2") format("woff2"), url("../assets/fonts/Ranade-Medium.woff") format("woff");
   font-weight: 500;
-  font-display: swap;
   font-style: normal;
+  font-display: swap;
 }
 @font-face {
-  font-family: "Ranade-Bold";
-  src: url("../fonts/Ranade-Bold.woff2") format("woff2"), url("../fonts/Ranade-Bold.woff") format("woff"), url("../fonts/Ranade-Bold.ttf") format("truetype");
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Bold.woff2") format("woff2"), url("../assets/fonts/Ranade-Bold.woff") format("woff");
   font-weight: 700;
-  font-display: swap;
   font-style: normal;
-}
-@font-face {
-  font-family: "Ranade-Variable";
-  src: url("../fonts/Ranade-Variable.woff2") format("woff2"), url("../fonts/Ranade-Variable.woff") format("woff"), url("../fonts/Ranade-Variable.ttf") format("truetype");
-  font-weight: 100 700;
   font-display: swap;
-  font-style: normal;
 }
 * {
   margin: 0;
@@ -72,7 +65,7 @@ header .container-header > a {
   letter-spacing: -0.03em;
   color: #006d36;
   font-weight: 600;
-  font-family: "Ranade-Bold", sans-serif;
+  font-family: "Ranade";
 }
 header .container-header > a img {
   width: 30px;
@@ -91,7 +84,7 @@ header .container-header nav ul li a {
   line-height: 100%;
   letter-spacing: 0.05em;
   color: #3d4a3e;
-  font-family: "Ranade-Medium", sans-serif;
+  font-family: "Ranade";
   transition: color 0.2s;
 }
 header .container-header nav ul li a:hover {
@@ -136,7 +129,7 @@ header .container-header nav ul li:last-child a:hover {
   gap: 16px;
 }
 .left-side-hero h1 {
-  font-family: "Ranade-Bold", sans-serif;
+  font-family: "Ranade", sans-serif;
   font-weight: 700;
   font-size: 48px;
   line-height: 125%;
@@ -144,7 +137,7 @@ header .container-header nav ul li:last-child a:hover {
   color: #006d36;
 }
 .left-side-hero span {
-  font-family: "Ranade-Bold", sans-serif;
+  font-family: "Ranade", sans-serif;
   font-weight: 700;
   font-size: 48px;
   line-height: 125%;
@@ -152,7 +145,7 @@ header .container-header nav ul li:last-child a:hover {
   color: #191c1d;
 }
 .left-side-hero p {
-  font-family: "Ranade-Medium", sans-serif;
+  font-family: "Ranade", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 160%;
@@ -177,7 +170,7 @@ header .container-header nav ul li:last-child a:hover {
   height: 28px;
   background: rgba(74, 222, 128, 0.3);
   margin-bottom: 4px;
-  font-family: "Ranade-Medium", sans-serif;
+  font-family: "Ranade", sans-serif;
   font-size: 12px;
   color: #006d36;
 }
@@ -207,7 +200,7 @@ header .container-header nav ul li:last-child a:hover {
   width: 240px;
   height: 56px;
   background-color: #005528;
-  font-family: "Ranade-Medium", sans-serif;
+  font-family: "Ranade";
   font-weight: 500;
   font-size: 16px;
   line-height: 140%;
@@ -230,7 +223,7 @@ header .container-header nav ul li:last-child a:hover {
   padding: 16px 32px;
   width: auto;
   height: 56px;
-  font-family: "Ranade-Medium", sans-serif;
+  font-family: "Ranade";
   font-weight: 500;
   font-size: 16px;
   line-height: 140%;
@@ -270,4 +263,371 @@ model-viewer {
   z-index: 1;
   background: transparent;
   --poster-color: transparent;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.features-section {
+  padding: 80px 0;
+}
+
+.features-section-text {
+  text-align: center;
+  margin-bottom: 60px;
+}
+.features-section-text h2 {
+  font-family: "Ranade";
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 120%;
+  letter-spacing: -0.01em;
+  color: #006d36;
+  margin-bottom: 12px;
+}
+.features-section-text p {
+  font-family: "Ranade";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 160%;
+  color: #3d4a3e;
+}
+
+.features-section-details {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.features-card {
+  background: #f8f9fa;
+  border: 1px solid rgba(0, 109, 54, 0.05);
+  border-radius: 12px 48px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  flex: 1;
+  max-width: 580px;
+}
+
+.features-card-icon {
+  display: block;
+}
+
+.features-card-title {
+  font-family: "Ranade";
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 130%;
+  color: #191c1d;
+}
+
+.features-card-desc {
+  font-family: "Ranade";
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  color: #3d4a3e;
+}
+
+.features-progress {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.features-progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.features-progress-label {
+  font-family: "Ranade";
+  font-size: 15px;
+  font-weight: 600;
+  color: #005528;
+}
+
+.features-progress-percent {
+  font-family: "Ranade";
+  font-size: 14px;
+  font-weight: 600;
+  color: #006d36;
+}
+
+.features-progress-bar {
+  width: 100%;
+  height: 8px;
+  background: rgba(0, 109, 54, 0.12);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.features-progress-fill {
+  height: 100%;
+  background: #006d36;
+  border-radius: 9999px;
+  transition: width 0.6s ease;
+}
+
+.features-ai-comment {
+  border-left: 4px solid #944a23;
+  border-radius: 12px;
+  padding: 23px 24px 24px;
+  width: 100%;
+  max-width: 390px;
+  background: #f3f4f5;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.features-ai-label {
+  font-family: "Ranade";
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #944a23;
+}
+
+.features-ai-text {
+  font-family: "Ranade";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 150%;
+  color: #3d4a3e;
+}
+
+footer {
+  background: #006d36;
+  border-radius: 18px 38px;
+  padding: 80px;
+  width: 100%;
+}
+footer .footer-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  font-family: "Ranade";
+  font-size: 22px;
+  color: #fff;
+}
+.footer-logo img {
+  width: 28px;
+  height: 28px;
+}
+
+.footer-tagline {
+  font-family: "Ranade";
+  font-size: 15px;
+  line-height: 160%;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-nav {
+  display: flex;
+  gap: 60px;
+}
+
+.footer-nav-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-nav-col .footer-nav-title {
+  font-family: "Ranade-Bold";
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 4px;
+}
+.footer-nav-col a {
+  font-family: "Ranade";
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav-col a:hover {
+  color: #fff;
+}
+
+.footer-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  gap: 6px;
+  align-self: flex-end;
+}
+.footer-copy p {
+  font-family: "Ranade";
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.footer-logo img {
+  width: 28px;
+  height: 28px;
+  filter: brightness(0) invert(1);
+}
+
+/*
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #f9f9f9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+}
+
+.pl-plant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pl-dot {
+  width: 10px;
+  height: 10px;
+  background: #4ade80;
+  border-radius: 9999px;
+  opacity: 0;
+  animation: dotPop 0.3s ease 1.3s forwards;
+}
+
+.pl-stem-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.pl-stem {
+  width: 3px;
+  height: 0;
+  background: #006d36;
+  border-radius: 9999px;
+  animation: stemGrow 1s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
+}
+
+.pl-leaf-left {
+  width: 22px;
+  height: 14px;
+  background: #006d36;
+  border-radius: 50% 0 50% 0;
+  position: absolute;
+  left: -22px;
+  top: 16px;
+  opacity: 0;
+  transform: rotate(-20deg) scale(0);
+  animation: leafPop 0.4s ease 0.9s forwards;
+}
+
+.pl-leaf-right {
+  width: 22px;
+  height: 14px;
+  background: #4ade80;
+  border-radius: 0 50% 0 50%;
+  position: absolute;
+  right: -22px;
+  top: 32px;
+  opacity: 0;
+  transform: rotate(20deg) scale(0);
+  animation: leafPop 0.4s ease 1.1s forwards;
+}
+
+.pl-title {
+  font-family: "Ranade";
+  font-size: 36px;
+  font-weight: 700;
+  color: #006d36;
+  letter-spacing: -0.03em;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.6s ease 1.4s forwards;
+
+  span {
+    color: #191c1d;
+  }
+}
+
+.pl-bar-wrap {
+  width: 180px;
+  height: 4px;
+  background: rgba(0, 109, 54, 0.12);
+  border-radius: 9999px;
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeUp 0.4s ease 1.7s forwards;
+}
+
+.pl-bar {
+  height: 100%;
+  width: 0;
+  background: #006d36;
+  border-radius: 9999px;
+  animation: barFill 1.2s ease 1.8s forwards;
+}
+
+.pl-hint {
+  font-family: "Ranade";
+  font-size: 13px;
+  color: rgba(61, 74, 62, 0.5);
+  opacity: 0;
+  letter-spacing: 0.04em;
+  animation: fadeUp 0.4s ease 2s forwards;
+}
+
+@keyframes stemGrow {
+  to {
+    height: 60px;
+  }
+}
+@keyframes leafPop {
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+@keyframes dotPop {
+  to {
+    opacity: 1;
+  }
+}
+@keyframes barFill {
+  to {
+    width: 100%;
+  }
+}
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+*//*# sourceMappingURL=style.css.map */
