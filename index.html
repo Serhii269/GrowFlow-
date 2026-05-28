@@ -4,26 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/style.css" />
-    <link rel="stylesheet" href="styles/mobile.css" />
     <link rel="icon" type="image/x-icon" href="assets/icons/logo.svg" />
     <title>GrowFlow</title>
   </head>
   <body>
-    <div class="preloader" id="preloader">
-      <div class="pl-plant">
-        <div class="pl-dot"></div>
-        <div class="pl-stem-wrap">
-          <div class="pl-leaf-left"></div>
-          <div class="pl-stem"></div>
-          <div class="pl-leaf-right"></div>
-        </div>
-      </div>
-      <div class="pl-title">Grow<span>Flow</span></div>
-      <div class="pl-bar-wrap">
-        <div class="pl-bar"></div>
-      </div>
-      <p class="pl-hint">cultivating your garden…</p>
-    </div>
     <header>
       <div class="container container-header">
         <a href="index.html">
@@ -32,9 +16,9 @@
         </a>
         <nav>
           <ul>
-            <li><a href="#">Garden</a></li>
-            <li><a href="#">Methods</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="garden.html">Garden</a></li>
+            <li><a href="#features">Methods</a></li>
+            <li><a href="about.html">About</a></li>
             <li><a href="register.html">Get Started</a></li>
           </ul>
         </nav>
@@ -53,8 +37,10 @@
               coach guide your growth.
             </p>
             <div class="hero-actions">
-              <a href="#" class="btn-primary">Plant your first seed</a>
-              <a href="#" class="btn-secondary">How it works</a>
+              <a href="register.html" class="btn-primary"
+                >Plant your first seed</a
+              >
+              <a href="about.html" class="btn-secondary">How it works</a>
             </div>
           </div>
           <div class="right-side-hero">
@@ -70,7 +56,7 @@
         </div>
       </section>
 
-      <section class="features-section container">
+      <section id="features" class="features-section container">
         <div class="features-section-text">
           <h2>Rooted in Mindfulness</h2>
           <p>
@@ -143,20 +129,20 @@
         <nav class="footer-nav">
           <div class="footer-nav-col">
             <span class="footer-nav-title">Product</span>
-            <a href="#">Garden</a>
-            <a href="#">Methods</a>
+            <a href="garden.html">Garden</a>
+            <a href="index.html#features">Methods</a>
             <a href="#">AI Assistant</a>
           </div>
           <div class="footer-nav-col">
             <span class="footer-nav-title">Company</span>
-            <a href="#">About</a>
-            <a href="#">Blog</a>
-            <a href="#">Contact</a>
+            <a href="about.html">About</a>
+            <a href="about.html">Blog</a>
+            <a href="contact.html">Contact</a>
           </div>
           <div class="footer-nav-col">
             <span class="footer-nav-title">Legal</span>
-            <a href="#">Privacy</a>
-            <a href="#">Terms</a>
+            <a href="privacy.html">Privacy</a>
+            <a href="terms.html">Terms</a>
           </div>
         </nav>
 

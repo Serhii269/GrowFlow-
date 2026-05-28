@@ -1,0 +1,218 @@
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Thin.woff2") format("woff2"), url("../assets/fonts/Ranade-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Light.woff2") format("woff2"), url("../assets/fonts/Ranade-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Regular.woff2") format("woff2"), url("../assets/fonts/Ranade-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Medium.woff2") format("woff2"), url("../assets/fonts/Ranade-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Bold.woff2") format("woff2"), url("../assets/fonts/Ranade-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ranade", sans-serif;
+  font-weight: 400;
+  background: #fff;
+  color: #191c1d;
+}
+
+.contact-section {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+  padding: 80px 0 100px;
+}
+
+.contact-left {
+  flex: 1;
+  max-width: 400px;
+  position: sticky;
+  top: 40px;
+}
+
+.contact-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(0, 109, 54, 0.15);
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #006d36;
+  background: rgba(74, 222, 128, 0.15);
+  margin-bottom: 20px;
+  letter-spacing: 0.04em;
+}
+
+.contact-left h1 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #191c1d;
+  letter-spacing: -0.02em;
+  line-height: 110%;
+  margin-bottom: 16px;
+}
+.contact-left > p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 165%;
+  color: #6b7c6c;
+  margin-bottom: 48px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.contact-info-item .contact-info-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #9aaa9b;
+}
+.contact-info-item a,
+.contact-info-item span {
+  font-size: 15px;
+  font-weight: 500;
+  color: #191c1d;
+  text-decoration: none;
+}
+.contact-info-item a:hover,
+.contact-info-item span:hover {
+  color: #006d36;
+}
+.contact-info-item a {
+  color: #006d36;
+}
+
+.contact-right {
+  flex: 1;
+  max-width: 520px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.contact-field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #3d4a3e;
+}
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  border: 1.5px solid #e2e8e3;
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-family: "Ranade", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  color: #191c1d;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+  resize: none;
+}
+.contact-field input::-moz-placeholder, .contact-field textarea::-moz-placeholder {
+  color: #b0bcb1;
+}
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  color: #b0bcb1;
+}
+.contact-field input:focus,
+.contact-field textarea:focus {
+  border-color: #006d36;
+}
+.contact-field input {
+  height: 48px;
+}
+
+.contact-btn {
+  border: none;
+  border-radius: 12px;
+  padding: 16px 0;
+  width: 100%;
+  height: 52px;
+  background: #006d36;
+  font-family: "Ranade", sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 4px;
+}
+.contact-btn:hover {
+  background: #005528;
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    flex-direction: column;
+    gap: 48px;
+    padding: 48px 0 60px;
+  }
+  .contact-left {
+    max-width: 100%;
+    position: static;
+  }
+  .contact-left h1 {
+    font-size: 36px;
+  }
+  .contact-right {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .contact-left h1 {
+    font-size: 28px;
+  }
+}/*# sourceMappingURL=contact.css.map */

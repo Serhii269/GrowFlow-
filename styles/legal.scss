@@ -1,0 +1,179 @@
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Thin.woff2") format("woff2"),
+    url("../assets/fonts/Ranade-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Light.woff2") format("woff2"),
+    url("../assets/fonts/Ranade-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Regular.woff2") format("woff2"),
+    url("../assets/fonts/Ranade-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Medium.woff2") format("woff2"),
+    url("../assets/fonts/Ranade-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Bold.woff2") format("woff2"),
+    url("../assets/fonts/Ranade-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ranade", sans-serif;
+  font-weight: 400;
+  background: #fff;
+  color: #191c1d;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+.legal-page {
+  min-height: 100vh;
+  padding-bottom: 100px;
+}
+
+.legal-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(0, 109, 54, 0.08);
+  margin-bottom: 60px;
+}
+
+.legal-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: #006d36;
+
+  img {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.legal-back-btn {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #3d4a3e;
+  border: 1.5px solid rgba(0, 109, 54, 0.2);
+  border-radius: 9999px;
+  padding: 8px 20px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #006d36;
+    color: #fff;
+    border-color: #006d36;
+  }
+}
+
+.legal-section {
+  max-width: 720px;
+}
+
+.legal-badge {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgba(0, 109, 54, 0.15);
+  border-radius: 9999px;
+  padding: 4px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #006d36;
+  background: rgba(74, 222, 128, 0.15);
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: #191c1d;
+  line-height: 115%;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.legal-date {
+  font-size: 14px;
+  font-weight: 400;
+  color: #9aaa9b;
+  margin-bottom: 52px;
+}
+
+.legal-block {
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(0, 109, 54, 0.07);
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #006d36;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 175%;
+    color: #3d4a3e;
+  }
+
+  a {
+    color: #006d36;
+    text-decoration: none;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
