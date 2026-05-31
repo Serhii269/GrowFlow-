@@ -285,4 +285,10 @@ body {
 }
 .auth-switch a:hover {
   text-decoration: underline;
+}
+
+.form-error {
+  font-size: 13px;
+  color: #dc2626;
+  min-height: 18px;
 }/*# sourceMappingURL=register.css.map */

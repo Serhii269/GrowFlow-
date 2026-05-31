@@ -1,0 +1,196 @@
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Thin.woff2") format("woff2"), url("../assets/fonts/Ranade-Thin.woff") format("woff");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Light.woff2") format("woff2"), url("../assets/fonts/Ranade-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Regular.woff2") format("woff2"), url("../assets/fonts/Ranade-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Medium.woff2") format("woff2"), url("../assets/fonts/Ranade-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Ranade";
+  src: url("../assets/fonts/Ranade-Bold.woff2") format("woff2"), url("../assets/fonts/Ranade-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ranade", sans-serif;
+  font-weight: 400;
+  background: #f5f7f5;
+  color: #191c1d;
+}
+
+.profile-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.profile-card:first-child {
+  grid-column: 1/-1;
+}
+
+.profile-card {
+  background: #fff;
+  border: 1px solid rgba(0, 109, 54, 0.07);
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.profile-card-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9aaa9b;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.profile-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #006d36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+.profile-avatar span {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.profile-info h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #191c1d;
+  margin-bottom: 4px;
+}
+.profile-info p {
+  font-size: 14px;
+  color: #9aaa9b;
+}
+
+.profile-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.profile-field label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7c6c;
+}
+.profile-field input {
+  height: 44px;
+  border: 1.5px solid #e8edea;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-family: "Ranade", sans-serif;
+  font-size: 14px;
+  color: #191c1d;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.profile-field input:focus {
+  border-color: #006d36;
+}
+
+.profile-error {
+  font-size: 13px;
+  color: #dc2626;
+  min-height: 18px;
+  margin-bottom: 8px;
+}
+
+.profile-success {
+  font-size: 13px;
+  color: #006d36;
+  min-height: 18px;
+  margin-bottom: 8px;
+}
+
+.profile-btn {
+  height: 46px;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  background: #006d36;
+  font-family: "Ranade", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.profile-btn:hover {
+  background: #005528;
+}
+
+.profile-danger {
+  border-color: rgba(220, 38, 38, 0.1);
+}
+
+.logout-btn {
+  display: inline-flex;
+  align-items: center;
+  height: 46px;
+  padding: 0 24px;
+  border: 1.5px solid rgba(220, 38, 38, 0.2);
+  border-radius: 12px;
+  background: transparent;
+  font-family: "Ranade", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #dc2626;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.logout-btn:hover {
+  background: rgba(220, 38, 38, 0.05);
+}
+
+.page-header {
+  margin-bottom: 32px;
+}
+.page-header h1 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #191c1d;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.page-header p {
+  font-size: 13px;
+  color: #9aaa9b;
+}/*# sourceMappingURL=profile.css.map */

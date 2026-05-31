@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/garden.css" />
+    <link rel="stylesheet" href="styles/focus.css" />
+    <link rel="icon" type="image/x-icon" href="assets/icons/logo.svg" />
+    <title>GrowFlow — Focus</title>
+  </head>
+  <body>
+    <div class="app-layout">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <a href="index.html" class="logo">
+            <img
+              src="assets/icons/logo.svg"
+              alt="logo"
+              width="28"
+              height="28"
+            />
+            <span>GrowFlow</span>
+          </a>
+          <button
+            class="new-habit-btn"
+            onclick="window.location.href='dashboard.html'"
+          >
+            <img
+              src="assets/icons/nav-plus.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            New Habit
+          </button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link">
+            <img
+              src="assets/icons/nav-dashboard.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            Dashboard
+          </a>
+          <a href="garden.html" class="nav-link">
+            <img
+              src="assets/icons/nav-garden.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            Garden
+          </a>
+          <a href="focus.html" class="nav-link active">
+            <img
+              src="assets/icons/nav-focus.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            Focus
+          </a>
+          <a href="ai.html" class="nav-link">
+            <img src="assets/icons/nav-ai.svg" alt="" width="18" height="18" />
+            AI Assistant
+          </a>
+        </nav>
+
+        <div
+          class="sidebar-user"
+          id="sidebar-user"
+          onclick="window.location.href='profile.html'"
+          style="cursor: pointer"
+        >
+          <div class="user-avatar"><span>AM</span></div>
+          <div class="user-info">
+            <p class="user-name">Alex Morgan</p>
+            <span class="user-status">Premium</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-header">
+          <h1>Focus</h1>
+          <p>Stay present. Let your garden grow.</p>
+        </div>
+
+        <div class="focus-layout">
+          <div class="focus-center">
+            <div class="mode-switcher">
+              <button
+                class="mode-btn active"
+                id="btn-focus"
+                onclick="setMode('focus')"
+              >
+                Focus
+              </button>
+              <button
+                class="mode-btn"
+                id="btn-break"
+                onclick="setMode('break')"
+              >
+                Short break
+              </button>
+              <button class="mode-btn" id="btn-long" onclick="setMode('long')">
+                Long break
+              </button>
+            </div>
+
+            <div class="timer-wrap">
+              <svg
+                class="timer-ring"
+                width="260"
+                height="260"
+                viewBox="0 0 260 260"
+              >
+                <circle
+                  cx="130"
+                  cy="130"
+                  r="118"
+                  fill="none"
+                  stroke="rgba(0,109,54,0.07)"
+                  stroke-width="5"
+                />
+                <circle
+                  cx="130"
+                  cy="130"
+                  r="118"
+                  fill="none"
+                  stroke="#006d36"
+                  stroke-width="5"
+                  stroke-linecap="round"
+                  stroke-dasharray="741.4"
+                  stroke-dashoffset="0"
+                  id="timer-progress"
+                  transform="rotate(-90 130 130)"
+                />
+              </svg>
+              <div class="timer-inner">
+                <p class="timer-display" id="timer-display">25:00</p>
+                <span class="timer-label" id="timer-label">Focus time</span>
+              </div>
+            </div>
+
+            <div class="timer-controls">
+              <button class="ctrl-btn" onclick="resetTimer()">
+                <img
+                  src="assets/icons/timer-reset.svg"
+                  alt="reset"
+                  width="18"
+                  height="18"
+                />
+              </button>
+              <button
+                class="ctrl-btn ctrl-main"
+                id="btn-start"
+                onclick="toggleTimer()"
+              >
+                <img
+                  src="assets/icons/timer-play.svg"
+                  alt="start"
+                  width="20"
+                  height="20"
+                  id="play-icon"
+                />
+                <img
+                  src="assets/icons/timer-pause.svg"
+                  alt="pause"
+                  width="20"
+                  height="20"
+                  id="pause-icon"
+                  style="display: none"
+                />
+              </button>
+              <button class="ctrl-btn" onclick="skipTimer()">
+                <img
+                  src="assets/icons/timer-skip.svg"
+                  alt="skip"
+                  width="18"
+                  height="18"
+                />
+              </button>
+            </div>
+
+            <div class="session-info">
+              <div class="session-dots" id="session-dots"></div>
+              <p id="session-text">Session 1 of 4</p>
+            </div>
+          </div>
+
+          <div class="focus-right">
+            <div class="focus-card">
+              <p class="focus-card-label">Focusing on</p>
+              <div class="focus-habits" id="focus-habits">
+                <div class="focus-habit selected" onclick="selectHabit(this)">
+                  <div class="focus-habit-icon">
+                    <img
+                      src="assets/icons/habits/book-open.svg"
+                      width="16"
+                      height="16"
+                      alt=""
+                    />
+                  </div>
+                  <div class="focus-habit-text">
+                    <p>Read 10 pages</p>
+                    <span>Oak · 12 day streak</span>
+                  </div>
+                </div>
+                <div class="focus-habit" onclick="selectHabit(this)">
+                  <div class="focus-habit-icon">
+                    <img
+                      src="assets/icons/habits/droplets.svg"
+                      width="16"
+                      height="16"
+                      alt=""
+                    />
+                  </div>
+                  <div class="focus-habit-text">
+                    <p>Drink 2L water</p>
+                    <span>Sprout · 4 day streak</span>
+                  </div>
+                </div>
+                <div class="focus-habit" onclick="selectHabit(this)">
+                  <div class="focus-habit-icon">
+                    <img
+                      src="assets/icons/habits/dumbbell.svg"
+                      width="16"
+                      height="16"
+                      alt=""
+                    />
+                  </div>
+                  <div class="focus-habit-text">
+                    <p>Morning workout</p>
+                    <span>Blossom · No streak</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="focus-card">
+              <p class="focus-card-label">Today's sessions</p>
+              <div class="sessions-list">
+                <div class="session-item done">
+                  <div class="session-dot"></div>
+                  <div class="session-item-text">
+                    <p>Read 10 pages</p>
+                    <span>09:15 · 25 min</span>
+                  </div>
+                </div>
+                <div class="session-item done">
+                  <div class="session-dot"></div>
+                  <div class="session-item-text">
+                    <p>Read 10 pages</p>
+                    <span>09:50 · 25 min</span>
+                  </div>
+                </div>
+                <div class="session-item active">
+                  <div class="session-dot"></div>
+                  <div class="session-item-text">
+                    <p>Read 10 pages</p>
+                    <span>In progress</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="focus-card focus-tip">
+              <p class="focus-card-label">Tip</p>
+              <p class="focus-tip-text">
+                Put your phone away and close unused tabs. Your plant grows
+                stronger with every focused session.
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="js/auth.js"></script>
+    <script src="js/focus.js"></script>
+  </body>
+</html>

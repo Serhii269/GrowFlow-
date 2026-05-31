@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/garden.css" />
+    <link rel="stylesheet" href="styles/ai.css" />
+    <link rel="icon" type="image/x-icon" href="assets/icons/logo.svg" />
+    <title>GrowFlow — AI Assistant</title>
+  </head>
+  <body>
+    <div class="app-layout">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <a href="index.html" class="logo">
+            <img
+              src="assets/icons/logo.svg"
+              alt="logo"
+              width="28"
+              height="28"
+            />
+            <span>GrowFlow</span>
+          </a>
+          <button
+            class="new-habit-btn"
+            onclick="window.location.href='dashboard.html'"
+          >
+            <img
+              src="assets/icons/nav-plus.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            New Habit
+          </button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link">
+            <img
+              src="assets/icons/nav-dashboard.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            Dashboard
+          </a>
+          <a href="garden.html" class="nav-link">
+            <img
+              src="assets/icons/nav-garden.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            Garden
+          </a>
+          <a href="focus.html" class="nav-link">
+            <img
+              src="assets/icons/nav-focus.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            Focus
+          </a>
+          <a href="ai.html" class="nav-link active">
+            <img src="assets/icons/nav-ai.svg" alt="" width="18" height="18" />
+            AI Assistant
+          </a>
+        </nav>
+
+        <div
+          class="sidebar-user"
+          id="sidebar-user"
+          onclick="window.location.href='profile.html'"
+          style="cursor: pointer"
+        >
+          <div class="user-avatar"><span>AM</span></div>
+          <div class="user-info">
+            <p class="user-name">Alex Morgan</p>
+            <span class="user-status">Premium</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-header">
+          <h1>AI Assistant</h1>
+          <p>Your personal habit coach</p>
+        </div>
+
+        <div class="ai-layout">
+          <div class="ai-chat">
+            <div class="chat-messages" id="chat-messages">
+              <div class="message message-ai">
+                <div class="message-avatar">
+                  <img
+                    src="assets/icons/logo.svg"
+                    alt=""
+                    width="16"
+                    height="16"
+                  />
+                </div>
+                <div class="message-bubble">
+                  <p>
+                    Hi! I'm your GrowFlow assistant. I can see your habits and
+                    help you build better routines, stay consistent, and reach
+                    your goals. What would you like to work on today?
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="chat-input-wrap">
+              <div class="chat-suggestions" id="suggestions">
+                <button class="suggestion-btn" onclick="sendSuggestion(this)">
+                  How can I stay consistent?
+                </button>
+                <button class="suggestion-btn" onclick="sendSuggestion(this)">
+                  Analyze my habits
+                </button>
+                <button class="suggestion-btn" onclick="sendSuggestion(this)">
+                  I keep missing my streak
+                </button>
+                <button class="suggestion-btn" onclick="sendSuggestion(this)">
+                  Tips for morning routine
+                </button>
+              </div>
+              <div class="chat-input-row">
+                <input
+                  type="text"
+                  id="chat-input"
+                  placeholder="Ask about your habits..."
+                  onkeydown="if(event.key==='Enter') sendMessage()"
+                />
+                <button class="send-btn" onclick="sendMessage()">
+                  <img
+                    src="assets/icons/nav-plus.svg"
+                    alt="send"
+                    width="16"
+                    height="16"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="ai-sidebar">
+            <div class="ai-card">
+              <p class="ai-card-label">Your habits</p>
+              <div class="ai-habits-list">
+                <div class="ai-habit-item">
+                  <div class="ai-habit-icon">
+                    <img
+                      src="assets/icons/habits/book-open.svg"
+                      width="14"
+                      height="14"
+                      alt=""
+                    />
+                  </div>
+                  <div class="ai-habit-text">
+                    <p>Read 10 pages</p>
+                    <span>12 day streak</span>
+                  </div>
+                  <div class="ai-habit-status good"></div>
+                </div>
+                <div class="ai-habit-item">
+                  <div class="ai-habit-icon">
+                    <img
+                      src="assets/icons/habits/droplets.svg"
+                      width="14"
+                      height="14"
+                      alt=""
+                    />
+                  </div>
+                  <div class="ai-habit-text">
+                    <p>Drink 2L water</p>
+                    <span>4 day streak</span>
+                  </div>
+                  <div class="ai-habit-status medium"></div>
+                </div>
+                <div class="ai-habit-item">
+                  <div class="ai-habit-icon">
+                    <img
+                      src="assets/icons/habits/dumbbell.svg"
+                      width="14"
+                      height="14"
+                      alt=""
+                    />
+                  </div>
+                  <div class="ai-habit-text">
+                    <p>Morning workout</p>
+                    <span>No streak</span>
+                  </div>
+                  <div class="ai-habit-status bad"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ai-card">
+              <p class="ai-card-label">This week</p>
+              <div class="ai-week-stats">
+                <div class="ai-stat">
+                  <p class="ai-stat-value">68%</p>
+                  <span>Completion</span>
+                </div>
+                <div class="ai-stat">
+                  <p class="ai-stat-value">12</p>
+                  <span>Best streak</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="js/auth.js"></script>
+    <script src="js/ai.js"></script>
+  </body>
+</html>

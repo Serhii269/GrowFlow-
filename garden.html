@@ -4,25 +4,242 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/garden.css" />
-    <title>GrowFlow - Garden</title>
+    <link rel="stylesheet" href="styles/garden-view.css" />
+    <link rel="icon" type="image/x-icon" href="assets/icons/logo.svg" />
+    <title>GrowFlow — Garden</title>
   </head>
   <body>
-    <header>
-      <nav>
-        <ul>
-          <li>
-            <button>New Habit</button>
-            <a href="">Dashboard</a>
-            <a href="">Garden</a>
-            <a href="">Focus</a>
-            <a href="">AI Assistant</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section></section>
-    </main>
-    <footer></footer>
+    <div class="app-layout">
+      <aside class="sidebar">
+        <div class="sidebar-top">
+          <a href="index.html" class="logo">
+            <img
+              src="assets/icons/logo.svg"
+              alt="logo"
+              width="28"
+              height="28"
+            />
+            <span>GrowFlow</span>
+          </a>
+          <button
+            class="new-habit-btn"
+            onclick="window.location.href='dashboard.html'"
+          >
+            <img
+              src="assets/icons/nav-plus.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            New Habit
+          </button>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="dashboard.html" class="nav-link">
+            <img
+              src="assets/icons/nav-dashboard.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            Dashboard
+          </a>
+          <a href="garden.html" class="nav-link active">
+            <img
+              src="assets/icons/nav-garden.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            Garden
+          </a>
+          <a href="focus.html" class="nav-link">
+            <img
+              src="assets/icons/nav-focus.svg"
+              alt=""
+              width="18"
+              height="18"
+            />
+            Focus
+          </a>
+          <a href="ai.html" class="nav-link">
+            <img src="assets/icons/nav-ai.svg" alt="" width="18" height="18" />
+            AI Assistant
+          </a>
+        </nav>
+
+        <div
+          class="sidebar-user"
+          id="sidebar-user"
+          onclick="window.location.href='profile.html'"
+          style="cursor: pointer"
+        >
+          <div class="user-avatar"><span>AM</span></div>
+          <div class="user-info">
+            <p class="user-name">Alex Morgan</p>
+            <span class="user-status">Premium</span>
+          </div>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <div class="page-header">
+          <div>
+            <h1>My Garden</h1>
+            <p>Your habits growing in real time</p>
+          </div>
+          <div class="garden-legend">
+            <span class="legend-item legend-healthy">Healthy</span>
+            <span class="legend-item legend-growing">Growing</span>
+            <span class="legend-item legend-wilting">Wilting</span>
+          </div>
+        </div>
+
+        <div class="garden-grid" id="garden-grid">
+          <div class="plant-card healthy">
+            <div class="plant-stage">
+              <div class="plant-visual">
+                <img
+                  src="assets/icons/plants/tree-deciduous.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                />
+              </div>
+              <div class="plant-glow"></div>
+            </div>
+            <div class="plant-info">
+              <div class="plant-header">
+                <div class="plant-habit-icon">
+                  <img
+                    src="assets/icons/habits/book-open.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </div>
+                <p class="plant-name">Oak</p>
+              </div>
+              <span class="plant-habit-name">Read 10 pages</span>
+              <div class="plant-progress">
+                <div class="plant-progress-bar">
+                  <div class="plant-progress-fill" style="width: 85%"></div>
+                </div>
+                <span class="plant-progress-label">85%</span>
+              </div>
+              <div class="plant-streak">
+                <img
+                  src="assets/icons/nav-focus.svg"
+                  width="12"
+                  height="12"
+                  alt=""
+                />
+                <span>12 day streak</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="plant-card growing">
+            <div class="plant-stage">
+              <div class="plant-visual">
+                <img
+                  src="assets/icons/plants/sprout.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                />
+              </div>
+              <div class="plant-glow"></div>
+            </div>
+            <div class="plant-info">
+              <div class="plant-header">
+                <div class="plant-habit-icon">
+                  <img
+                    src="assets/icons/habits/droplets.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </div>
+                <p class="plant-name">Sprout</p>
+              </div>
+              <span class="plant-habit-name">Drink 2L water</span>
+              <div class="plant-progress">
+                <div class="plant-progress-bar">
+                  <div class="plant-progress-fill" style="width: 50%"></div>
+                </div>
+                <span class="plant-progress-label">50%</span>
+              </div>
+              <div class="plant-streak">
+                <img
+                  src="assets/icons/nav-focus.svg"
+                  width="12"
+                  height="12"
+                  alt=""
+                />
+                <span>4 day streak</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="plant-card wilting">
+            <div class="plant-stage">
+              <div class="plant-visual">
+                <img
+                  src="assets/icons/plants/flower-2.svg"
+                  alt=""
+                  width="64"
+                  height="64"
+                />
+              </div>
+              <div class="plant-glow"></div>
+            </div>
+            <div class="plant-info">
+              <div class="plant-header">
+                <div class="plant-habit-icon">
+                  <img
+                    src="assets/icons/habits/dumbbell.svg"
+                    width="16"
+                    height="16"
+                    alt=""
+                  />
+                </div>
+                <p class="plant-name">Blossom</p>
+              </div>
+              <span class="plant-habit-name">Morning workout</span>
+              <div class="plant-progress">
+                <div class="plant-progress-bar">
+                  <div class="plant-progress-fill" style="width: 20%"></div>
+                </div>
+                <span class="plant-progress-label">20%</span>
+              </div>
+              <div class="plant-streak">
+                <img
+                  src="assets/icons/nav-focus.svg"
+                  width="12"
+                  height="12"
+                  alt=""
+                />
+                <span>No streak</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="plant-card empty-card">
+            <div class="plant-empty">
+              <img
+                src="assets/icons/nav-plus.svg"
+                width="20"
+                height="20"
+                alt=""
+              />
+              <p>Add a habit to<br />grow a new plant</p>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="js/auth.js"></script>
   </body>
 </html>
