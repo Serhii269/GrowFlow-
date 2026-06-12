@@ -13,7 +13,6 @@ async function checkAuth() {
     const statusEl = document.querySelector(".user-status");
 
     if (nameEl) nameEl.textContent = data.name;
-    if (statusEl) statusEl.textContent = "Premium";
     if (avatarEl) {
       const initials = data.name
         .split(" ")
