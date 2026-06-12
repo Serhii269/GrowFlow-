@@ -251,4 +251,93 @@ body {
 }
 .blog-card a:hover {
   text-decoration: underline;
+}
+
+.about-video-player {
+  width: 100%;
+  max-width: 860px;
+  border-radius: 24px;
+  display: block;
+  border: 1.5px solid rgba(0, 109, 54, 0.12);
+}
+
+.about-video-placeholder {
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.about-video-placeholder:hover {
+  background: #edf7f2;
+}
+.about-video-placeholder:hover .about-video-play {
+  background: #f0faf5;
+}
+
+.about-video-player {
+  width: 100%;
+  max-width: 860px;
+  border-radius: 24px;
+  display: block;
+  border: 1.5px solid rgba(0, 109, 54, 0.12);
+}
+
+@media (max-width: 768px) {
+  .about-hero {
+    padding: 48px 0 40px;
+  }
+  .about-hero h1 {
+    font-size: 36px;
+  }
+  .about-hero p {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  .about-video-player {
+    border-radius: 16px;
+  }
+  .about-steps {
+    padding: 48px 0;
+  }
+  .about-step {
+    gap: 16px;
+    padding: 24px 0;
+  }
+  .about-step h3 {
+    font-size: 18px;
+  }
+  .about-step p {
+    font-size: 15px;
+  }
+  .about-story {
+    padding: 40px 24px;
+    border-radius: 16px;
+    margin-bottom: 48px;
+  }
+  .about-story .about-story-inner h2 {
+    font-size: 24px;
+  }
+  .about-story .about-story-inner p {
+    font-size: 15px;
+  }
+  .about-blog {
+    padding-bottom: 60px;
+  }
+  .about-blog h2 {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .blog-card {
+    padding: 24px;
+  }
+}
+@media (max-width: 480px) {
+  .about-hero h1 {
+    font-size: 28px;
+  }
+  .about-story {
+    padding: 32px 16px;
+  }
 }/*# sourceMappingURL=about.css.map */

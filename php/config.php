@@ -1,14 +1,17 @@
 <?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 
 header('X-Content-Type-Options: nosniff');
 header('X-Frame-Options: DENY');
 header('X-XSS-Protection: 1; mode=block');
 
-define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
-define('DB_NAME', getenv('DB_NAME') ?: 'growflow');
-define('DB_USER', getenv('DB_USER') ?: 'sergijpidgorodeckij');
-define('DB_PASS', getenv('DB_PASS') ?: '');
-define('DB_PORT', getenv('DB_PORT') ?: '5432');
+if (!defined('DB_HOST')) define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+if (!defined('DB_NAME')) define('DB_NAME', getenv('DB_NAME') ?: 'growflow');
+if (!defined('DB_USER')) define('DB_USER', getenv('DB_USER') ?: 'sergijpidgorodeckij');
+if (!defined('DB_PASS')) define('DB_PASS', getenv('DB_PASS') ?: '');
+if (!defined('DB_PORT')) define('DB_PORT', getenv('DB_PORT') ?: '5432');
 
 try {
     $pdo = new PDO(

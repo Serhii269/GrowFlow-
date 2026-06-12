@@ -76,14 +76,18 @@
   align-items: center;
   gap: 6px;
 
-  &::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    display: block;
+  &.legend-healthy {
+    color: #006d36;
   }
+  &.legend-growing {
+    color: #f59e0b;
+  }
+  &.legend-wilting {
+    color: #dc2626;
+  }
+}
 
+/*
   &.legend-healthy::before {
     background: #006d36;
   }
@@ -106,8 +110,7 @@
 
   &.legend-wilting {
     color: #dc2626;
-  }
-}
+  }*/
 
 .garden-grid {
   display: grid;
@@ -128,7 +131,7 @@
 
   &.healthy {
     .plant-stage {
-      background: linear-gradient(160deg, #f0faf4 0%, #e6f7ed 100%);
+      background: #fff;
     }
 
     .plant-visual img {
@@ -136,74 +139,63 @@
     }
 
     .plant-glow {
-      background: rgba(0, 109, 54, 0.12);
+      display: none;
     }
 
     .plant-progress-fill {
       background: #006d36;
     }
-
-    .plant-streak {
-      color: #006d36;
-
-      img {
-        opacity: 0.7;
-      }
-    }
   }
 
   &.growing {
     .plant-stage {
-      background: linear-gradient(160deg, #fffbeb 0%, #fef3c7 100%);
+      background: #fff;
     }
 
     .plant-visual img {
-      opacity: 0.75;
+      opacity: 1;
     }
 
     .plant-glow {
-      background: rgba(245, 158, 11, 0.12);
+      display: none;
     }
 
     .plant-progress-fill {
       background: #f59e0b;
     }
-
-    .plant-streak {
-      color: #f59e0b;
-
-      img {
-        opacity: 0.7;
-        filter: sepia(1) saturate(3) hue-rotate(10deg);
-      }
-    }
   }
 
   &.wilting {
     .plant-stage {
-      background: linear-gradient(160deg, #fef9f9 0%, #fef2f2 100%);
+      background: #fff;
     }
 
     .plant-visual img {
-      opacity: 0.35;
-      filter: grayscale(0.5);
-      transform: rotate(-8deg);
+      opacity: 0.4;
+      filter: grayscale(0.4);
+      transform: rotate(-6deg);
     }
 
     .plant-glow {
-      background: rgba(220, 38, 38, 0.08);
+      display: none;
     }
 
     .plant-progress-fill {
       background: #dc2626;
     }
+  }
 
-    .plant-streak {
-      color: #dc2626;
+  &.new {
+    .plant-stage {
+      background: #fff;
+    }
 
-      img {
-        opacity: 0.5;
-      }
+    .plant-glow {
+      display: none;
+    }
+
+    .plant-progress-fill {
+      background: #006d36;
     }
   }
 }
@@ -348,6 +340,140 @@
     text-align: center;
     line-height: 1.6;
   }
+}
+.plant-status-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  margin-left: auto;
+
+  &.healthy {
+    background: rgba(0, 109, 54, 0.1);
+    color: #006d36;
+  }
+
+  &.growing {
+    background: rgba(245, 158, 11, 0.1);
+    color: #f59e0b;
+  }
+
+  &.wilting {
+    background: rgba(220, 38, 38, 0.1);
+    color: #dc2626;
+  }
+
+  &.new {
+    background: rgba(0, 109, 54, 0.06);
+    color: #9aaa9b;
+  }
+}
+
+.plant-streak {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.plant-days {
+  font-size: 12px;
+  font-weight: 500;
+  color: #6b7c6c;
+}
+
+.plant-completions {
+  font-size: 11px;
+  color: #9aaa9b;
+}
+
+.plant-modal-inner {
+  background: #fff;
+  border-radius: 24px;
+  width: 420px;
+  max-width: 92vw;
+  padding: 32px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.plant-modal-visual {
+  width: 160px;
+  height: 160px;
+  background: #f4faf6;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    object-fit: contain;
+  }
+}
+
+.plant-modal-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.plant-modal-stage {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9aaa9b;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.plant-modal-info h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #191c1d;
+  text-align: center;
+}
+
+.plant-modal-habit {
+  font-size: 14px;
+  color: #6b7c6c;
+  text-align: center;
+}
+
+.plant-modal-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.plant-modal-stat {
+  background: #f5f7f5;
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+
+  span {
+    font-size: 10px;
+    font-weight: 600;
+    color: #9aaa9b;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 700;
+    color: #191c1d;
+  }
+}
+
+.plant-modal-progress {
+  width: 100%;
 }
 
 @media (max-width: 1100px) {

@@ -36,14 +36,26 @@
         </p>
 
         <div class="about-video">
-          <div class="about-video-placeholder">
+          <div
+            class="about-video-placeholder"
+            id="video-placeholder"
+            onclick="playVideo()"
+          >
             <div class="about-video-play">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M6 4L20 12L6 20V4Z" fill="#006d36" />
               </svg>
             </div>
-            <p>How owkf kndlkwncldnwclsdnk</p>
+            <p>Get to know us better. Click Play!</p>
           </div>
+          <video
+            class="about-video-player"
+            id="about-video"
+            controls
+            style="display: none"
+          >
+            <source src="assets/video/about-us.mp4" type="video/mp4" />
+          </video>
         </div>
       </section>
 
@@ -185,5 +197,14 @@
         </div>
       </div>
     </footer>
+    <script>
+      function playVideo() {
+        const placeholder = document.getElementById("video-placeholder");
+        const video = document.getElementById("about-video");
+        placeholder.style.display = "none";
+        video.style.display = "block";
+        video.play();
+      }
+    </script>
   </body>
 </html>

@@ -30,3 +30,12 @@ async function checkAuth() {
     return null;
   }
 }
+
+setTimeout(() => {
+  const pl = document.getElementById("app-preloader");
+  if (pl) {
+    pl.style.opacity = "0";
+    pl.style.transition = "opacity 0.4s ease";
+    setTimeout(() => (pl.style.display = "none"), 400);
+  }
+}, 800);

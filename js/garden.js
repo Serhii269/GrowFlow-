@@ -1,11 +1,14 @@
+let currentUser = null;
+
 document.addEventListener("DOMContentLoaded", async () => {
-  const user = await checkAuth();
-  if (!user) return;
+  currentUser = await checkAuth();
+  if (!currentUser) return;
 
   const hour = new Date().getHours();
   const greet =
     hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
-  document.getElementById("greeting").textContent = greet + ", " + user.name;
+  document.getElementById("greeting").textContent =
+    greet + ", " + currentUser.name;
   document.getElementById("current-date").textContent =
     new Date().toLocaleDateString("en-US", {
       weekday: "long",
@@ -13,82 +16,87 @@ document.addEventListener("DOMContentLoaded", async () => {
       month: "long",
       day: "numeric",
     });
+
+  await loadHabits();
+  setupModal();
 });
 
-const habits = [];
-let selectedIcon = "book-open";
-let selectedPlant = "sprout";
-let selectedPlantName = "Sprout";
-
-const hour = new Date().getHours();
-const greet =
-  hour < 12 ? "Good morning" : hour < 18 ? "Good afternoon" : "Good evening";
-document.getElementById("greeting").textContent = greet;
-document.getElementById("current-date").textContent =
-  new Date().toLocaleDateString("en-US", {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
+function setupModal() {
+  document.getElementById("openModal").addEventListener("click", openModal);
+  document.getElementById("closeModal").addEventListener("click", closeModal);
+  document.getElementById("cancelModal").addEventListener("click", closeModal);
+  document.getElementById("modal-overlay").addEventListener("click", (e) => {
+    if (e.target.id === "modal-overlay") closeModal();
   });
 
-const openModal = () =>
+  document.querySelectorAll(".icon-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll(".icon-btn")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+
+  document.querySelectorAll(".plant-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document
+        .querySelectorAll(".plant-btn")
+        .forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+
+  document
+    .getElementById("add-subtask")
+    .addEventListener("click", addSubtaskField);
+  document.getElementById("submitHabit").addEventListener("click", createHabit);
+}
+
+function openModal() {
   document.getElementById("modal-overlay").classList.add("open");
-const closeModal = () => {
+  document.getElementById("habit-deadline").min = new Date()
+    .toISOString()
+    .split("T")[0];
+}
+
+function closeModal() {
   document.getElementById("modal-overlay").classList.remove("open");
   document.getElementById("habit-name").value = "";
   document.getElementById("habit-deadline").value = "";
-};
+  document.getElementById("subtasks-list").innerHTML = "";
+}
 
-document.getElementById("openModal").onclick = openModal;
-document.getElementById("closeModal").onclick = closeModal;
-document.getElementById("cancelModal").onclick = closeModal;
-document.getElementById("modal-overlay").onclick = (e) => {
-  if (e.target.id === "modal-overlay") closeModal();
-};
+function addSubtaskField() {
+  const list = document.getElementById("subtasks-list");
+  const div = document.createElement("div");
+  div.className = "subtask-field";
+  div.innerHTML = `
+    <input type="text" placeholder="e.g. Read 5 pages" class="subtask-input" />
+    <button type="button" class="subtask-remove" onclick="this.parentElement.remove()">
+      <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <path d="M1 1l8 8M9 1L1 9" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>`;
+  list.appendChild(div);
+  div.querySelector("input").focus();
+}
 
-document.querySelectorAll(".icon-btn").forEach((btn) => {
-  btn.onclick = () => {
-    document
-      .querySelectorAll(".icon-btn")
-      .forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    selectedIcon = btn.dataset.icon;
-  };
-});
+async function loadHabits() {
+  try {
+    const res = await fetch("php/habits.php");
+    const data = await res.json();
+    renderHabits(data.habits || []);
 
-document.querySelectorAll(".plant-btn").forEach((btn) => {
-  btn.onclick = () => {
-    document
-      .querySelectorAll(".plant-btn")
-      .forEach((b) => b.classList.remove("active"));
-    btn.classList.add("active");
-    selectedPlant = btn.dataset.plant;
-    selectedPlantName = btn.dataset.name;
-  };
-});
-
-document.getElementById("submitHabit").onclick = () => {
-  const name = document.getElementById("habit-name").value.trim();
-  const deadline = document.getElementById("habit-deadline").value;
-  if (!name) {
-    document.getElementById("habit-name").focus();
-    return;
+    const streak = data.max_streak || 0;
+    document.getElementById("streak-stat").textContent =
+      streak + (streak === 1 ? " day" : " days");
+  } catch (e) {
+    console.error("Failed to load habits", e);
   }
-  habits.push({
-    id: Date.now(),
-    name,
-    deadline,
-    icon: selectedIcon,
-    plant: selectedPlant,
-    plantName: selectedPlantName,
-    done: false,
-  });
-  closeModal();
-  renderHabits();
-};
+}
 
-function renderHabits() {
+function renderHabits(habits) {
   const list = document.getElementById("habits-list");
   const empty = document.getElementById("habits-empty");
   empty.style.display = habits.length ? "none" : "flex";
@@ -96,7 +104,8 @@ function renderHabits() {
 
   habits.forEach((habit) => {
     const el = document.createElement("div");
-    el.className = "habit-item" + (habit.done ? " completed" : "");
+    el.className = "habit-item" + (habit.done_today ? " completed" : "");
+
     const dl = habit.deadline
       ? " · " +
         new Date(habit.deadline).toLocaleDateString("en-US", {
@@ -104,6 +113,19 @@ function renderHabits() {
           day: "numeric",
         })
       : "";
+
+    const streakText = habit.streak > 0 ? ` · ${habit.streak}d streak` : "";
+
+    let subtasksHtml = "";
+    if (habit.subtasks && habit.subtasks.length > 0) {
+      subtasksHtml =
+        `<div class="habit-subtasks">` +
+        habit.subtasks
+          .map((st) => `<span class="subtask-tag">${st.title}</span>`)
+          .join("") +
+        `</div>`;
+    }
+
     el.innerHTML = `
       <div class="habit-icon">
         <img src="assets/icons/habits/${
@@ -112,12 +134,13 @@ function renderHabits() {
       </div>
       <div class="habit-info">
         <p>${habit.name}</p>
-        <span>${habit.plantName}${dl}</span>
+        <span>${habit.plant_name}${dl}${streakText}</span>
+        ${subtasksHtml}
       </div>
       <div class="habit-actions">
         <button class="habit-check-btn" onclick="toggleHabit(${habit.id})">
           ${
-            habit.done
+            habit.done_today
               ? '<svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.5 2.5 4.5-4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
               : ""
           }
@@ -128,28 +151,74 @@ function renderHabits() {
       </div>`;
     list.appendChild(el);
   });
-  updateStats();
+
+  updateStats(habits);
 }
 
-function toggleHabit(id) {
-  const h = habits.find((h) => h.id === id);
-  if (h) {
-    h.done = !h.done;
-    renderHabits();
+async function toggleHabit(id) {
+  await fetch("php/habits.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "toggle", habit_id: id }),
+  });
+  await loadHabits();
+}
+
+async function deleteHabit(id) {
+  await fetch("php/habits.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ action: "delete", habit_id: id }),
+  });
+  await loadHabits();
+}
+
+async function createHabit() {
+  const name = document.getElementById("habit-name").value.trim();
+  const deadline = document.getElementById("habit-deadline").value;
+
+  if (!name) {
+    document.getElementById("habit-name").focus();
+    return;
   }
-}
 
-function deleteHabit(id) {
-  const i = habits.findIndex((h) => h.id === id);
-  if (i > -1) {
-    habits.splice(i, 1);
-    renderHabits();
+  if (deadline) {
+    const today = new Date().toISOString().split("T")[0];
+    if (deadline < today) {
+      alert("Deadline cannot be in the past.");
+      return;
+    }
   }
+
+  const activeIcon = document.querySelector(".icon-btn.active");
+  const activePlant = document.querySelector(".plant-btn.active");
+
+  const subtaskInputs = document.querySelectorAll(".subtask-input");
+  const subtasks = Array.from(subtaskInputs)
+    .map((i) => i.value.trim())
+    .filter((v) => v);
+
+  await fetch("php/habits.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      action: "create",
+      name,
+      deadline,
+      icon: activeIcon?.dataset.icon || "book-open",
+      plant: activePlant?.dataset.plant || "sprout",
+      plant_name: activePlant?.dataset.name || "Sprout",
+      subtasks,
+    }),
+  });
+
+  closeModal();
+  await loadHabits();
 }
 
-function updateStats() {
+function updateStats(habits) {
   const total = habits.length;
-  const done = habits.filter((h) => h.done).length;
+  const done = habits.filter((h) => h.done_today).length;
   const pct = total ? Math.round((done / total) * 100) : 0;
   document.getElementById("completion-stat").textContent = pct + "%";
   document.getElementById("completion-bar").style.width = pct + "%";

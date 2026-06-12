@@ -361,3 +361,89 @@
   color: #6b7c6c;
   line-height: 1.6;
 }
+
+.focus-empty {
+  font-size: 13px;
+  color: #9aaa9b;
+  padding: 8px 0;
+
+  a {
+    color: #006d36;
+    text-decoration: none;
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 768px) {
+  .focus-layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .focus-center {
+    padding: 28px 20px;
+    gap: 24px;
+  }
+
+  .timer-wrap {
+    width: 220px;
+    height: 220px;
+
+    svg {
+      width: 220px;
+      height: 220px;
+    }
+  }
+
+  .timer-display {
+    font-size: 44px;
+  }
+
+  .mode-switcher {
+    width: 100%;
+  }
+
+  .mode-btn {
+    flex: 1;
+    padding: 0 8px;
+    font-size: 12px;
+  }
+
+  .ctrl-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .ctrl-main {
+    width: 60px;
+    height: 60px;
+  }
+
+  .focus-right {
+    gap: 10px;
+  }
+
+  .focus-card {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .focus-center {
+    padding: 20px 16px;
+  }
+
+  .timer-wrap {
+    width: 190px;
+    height: 190px;
+
+    svg {
+      width: 190px;
+      height: 190px;
+    }
+  }
+
+  .timer-display {
+    font-size: 38px;
+  }
+}

@@ -67,13 +67,12 @@
 
         <div
           class="sidebar-user"
-          id="sidebar-user"
           onclick="window.location.href='profile.html'"
           style="cursor: pointer"
         >
-          <div class="user-avatar"><span>AM</span></div>
+          <div class="user-avatar"><span></span></div>
           <div class="user-info">
-            <p class="user-name">Alex Morgan</p>
+            <p class="user-name"></p>
             <span class="user-status">Premium</span>
           </div>
         </div>
@@ -99,7 +98,7 @@
           </div>
           <div class="stat-card">
             <span class="stat-label">Streak</span>
-            <p class="stat-value">7 days</p>
+            <p class="stat-value" id="streak-stat">0 days</p>
           </div>
         </div>
 
@@ -146,8 +145,16 @@
           </div>
 
           <div class="modal-field">
-            <label>Deadline</label>
-            <input type="date" id="habit-deadline" />
+            <label>Deadline <span class="label-hint">(optional)</span></label>
+            <input type="date" id="habit-deadline" lang="en" />
+          </div>
+
+          <div class="modal-field">
+            <label>Sub-goals <span class="label-hint">(optional)</span></label>
+            <div id="subtasks-list"></div>
+            <button type="button" class="add-subtask-btn" id="add-subtask">
+              + Add sub-goal
+            </button>
           </div>
 
           <div class="modal-field">
@@ -302,6 +309,7 @@
         </div>
       </div>
     </div>
+
     <script src="js/auth.js"></script>
     <script src="js/garden.js"></script>
   </body>

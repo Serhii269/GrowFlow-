@@ -71,13 +71,12 @@
 
         <div
           class="sidebar-user"
-          id="sidebar-user"
           onclick="window.location.href='profile.html'"
           style="cursor: pointer"
         >
-          <div class="user-avatar"><span>AM</span></div>
+          <div class="user-avatar"><span></span></div>
           <div class="user-info">
-            <p class="user-name">Alex Morgan</p>
+            <p class="user-name"></p>
             <span class="user-status">Premium</span>
           </div>
         </div>
@@ -131,11 +130,10 @@
                   type="text"
                   id="chat-input"
                   placeholder="Ask about your habits..."
-                  onkeydown="if(event.key==='Enter') sendMessage()"
                 />
                 <button class="send-btn" onclick="sendMessage()">
                   <img
-                    src="assets/icons/nav-plus.svg"
+                    src="assets/icons/send.svg"
                     alt="send"
                     width="16"
                     height="16"
@@ -148,64 +146,18 @@
           <div class="ai-sidebar">
             <div class="ai-card">
               <p class="ai-card-label">Your habits</p>
-              <div class="ai-habits-list">
-                <div class="ai-habit-item">
-                  <div class="ai-habit-icon">
-                    <img
-                      src="assets/icons/habits/book-open.svg"
-                      width="14"
-                      height="14"
-                      alt=""
-                    />
-                  </div>
-                  <div class="ai-habit-text">
-                    <p>Read 10 pages</p>
-                    <span>12 day streak</span>
-                  </div>
-                  <div class="ai-habit-status good"></div>
-                </div>
-                <div class="ai-habit-item">
-                  <div class="ai-habit-icon">
-                    <img
-                      src="assets/icons/habits/droplets.svg"
-                      width="14"
-                      height="14"
-                      alt=""
-                    />
-                  </div>
-                  <div class="ai-habit-text">
-                    <p>Drink 2L water</p>
-                    <span>4 day streak</span>
-                  </div>
-                  <div class="ai-habit-status medium"></div>
-                </div>
-                <div class="ai-habit-item">
-                  <div class="ai-habit-icon">
-                    <img
-                      src="assets/icons/habits/dumbbell.svg"
-                      width="14"
-                      height="14"
-                      alt=""
-                    />
-                  </div>
-                  <div class="ai-habit-text">
-                    <p>Morning workout</p>
-                    <span>No streak</span>
-                  </div>
-                  <div class="ai-habit-status bad"></div>
-                </div>
-              </div>
+              <div class="ai-habits-list" id="ai-habits-list"></div>
             </div>
 
             <div class="ai-card">
-              <p class="ai-card-label">This week</p>
+              <p class="ai-card-label">Today</p>
               <div class="ai-week-stats">
                 <div class="ai-stat">
-                  <p class="ai-stat-value">68%</p>
+                  <p class="ai-stat-value" id="ai-completion">0%</p>
                   <span>Completion</span>
                 </div>
                 <div class="ai-stat">
-                  <p class="ai-stat-value">12</p>
+                  <p class="ai-stat-value" id="ai-streak">0</p>
                   <span>Best streak</span>
                 </div>
               </div>
@@ -214,6 +166,7 @@
         </div>
       </main>
     </div>
+
     <script src="js/auth.js"></script>
     <script src="js/ai.js"></script>
   </body>

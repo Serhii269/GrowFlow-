@@ -432,7 +432,6 @@ model-viewer {
 
 footer {
   background: #006d36;
-  border-radius: 18px 38px;
   padding: 80px;
   width: 100%;
 
@@ -486,7 +485,7 @@ footer {
   gap: 12px;
 
   .footer-nav-title {
-    font-family: "Ranade-Bold";
+    font-family: "Ranade";
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.08em;
@@ -533,4 +532,224 @@ footer {
 
 html {
   scroll-behavior: smooth;
+}
+
+/*Preloaer*/
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: #f0f3f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+
+  animation: preloaderHide 2.5s forwards;
+}
+
+.logo {
+  font-family: "Ranade";
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  display: flex;
+}
+
+.grow,
+.flow {
+  opacity: 0;
+}
+
+.grow {
+  color: #1dbb69;
+  transform: translateX(-20px);
+
+  animation: showGrow 0.8s ease forwards;
+}
+
+.flow {
+  color: #060707;
+  transform: translateX(20px);
+
+  animation: showFlow 0.8s ease forwards;
+  animation-delay: 0.35s;
+}
+
+@keyframes showGrow {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes showFlow {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes preloaderHide {
+  0%,
+  85% {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .container-header {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    > a {
+      font-size: 18px;
+
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+
+    nav ul {
+      gap: 20px;
+
+      li a {
+        font-size: 12px;
+      }
+
+      li:last-child a {
+        padding: 4px 16px;
+        height: 34px;
+      }
+    }
+  }
+
+  .hero-section {
+    padding: 60px 0;
+  }
+
+  .hero-inner {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .left-side-hero {
+    max-width: 100%;
+
+    h1 {
+      font-size: 36px;
+    }
+
+    span {
+      font-size: 36px;
+    }
+
+    p br {
+      display: none;
+    }
+  }
+
+  .right-side-hero {
+    width: 100%;
+    justify-content: center;
+  }
+
+  model-viewer {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .features-section {
+    padding: 60px 0;
+  }
+
+  .features-section-details {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .features-card {
+    padding: 32px 24px;
+    max-width: 100%;
+  }
+
+  .features-progress {
+    margin-top: 32px;
+  }
+
+  footer {
+    padding: 48px 0;
+
+    .footer-inner {
+      flex-direction: column;
+      gap: 40px;
+      padding: 0 20px;
+    }
+  }
+
+  .footer-nav {
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .footer-copy {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .container-header {
+    nav ul {
+      gap: 12px;
+
+      li:not(:last-child) {
+        display: none;
+      }
+    }
+  }
+
+  .left-side-hero {
+    h1 {
+      font-size: 28px;
+    }
+
+    span {
+      font-size: 28px;
+    }
+  }
+
+  model-viewer {
+    width: 260px;
+    height: 260px;
+  }
+
+  .features-card {
+    padding: 24px 20px;
+    border-radius: 12px 24px;
+  }
+
+  .footer-nav {
+    gap: 24px;
+  }
 }

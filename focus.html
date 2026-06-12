@@ -71,13 +71,12 @@
 
         <div
           class="sidebar-user"
-          id="sidebar-user"
           onclick="window.location.href='profile.html'"
           style="cursor: pointer"
         >
-          <div class="user-avatar"><span>AM</span></div>
+          <div class="user-avatar"><span></span></div>
           <div class="user-info">
-            <p class="user-name">Alex Morgan</p>
+            <p class="user-name"></p>
             <span class="user-status">Premium</span>
           </div>
         </div>
@@ -92,23 +91,9 @@
         <div class="focus-layout">
           <div class="focus-center">
             <div class="mode-switcher">
-              <button
-                class="mode-btn active"
-                id="btn-focus"
-                onclick="setMode('focus')"
-              >
-                Focus
-              </button>
-              <button
-                class="mode-btn"
-                id="btn-break"
-                onclick="setMode('break')"
-              >
-                Short break
-              </button>
-              <button class="mode-btn" id="btn-long" onclick="setMode('long')">
-                Long break
-              </button>
+              <button class="mode-btn active" id="btn-focus">Focus</button>
+              <button class="mode-btn" id="btn-break">Short break</button>
+              <button class="mode-btn" id="btn-long">Long break</button>
             </div>
 
             <div class="timer-wrap">
@@ -147,7 +132,7 @@
             </div>
 
             <div class="timer-controls">
-              <button class="ctrl-btn" onclick="resetTimer()">
+              <button class="ctrl-btn" id="btn-reset">
                 <img
                   src="assets/icons/timer-reset.svg"
                   alt="reset"
@@ -155,11 +140,7 @@
                   height="18"
                 />
               </button>
-              <button
-                class="ctrl-btn ctrl-main"
-                id="btn-start"
-                onclick="toggleTimer()"
-              >
+              <button class="ctrl-btn ctrl-main" id="btn-start">
                 <img
                   src="assets/icons/timer-play.svg"
                   alt="start"
@@ -176,7 +157,7 @@
                   style="display: none"
                 />
               </button>
-              <button class="ctrl-btn" onclick="skipTimer()">
+              <button class="ctrl-btn" id="btn-skip">
                 <img
                   src="assets/icons/timer-skip.svg"
                   alt="skip"
@@ -195,77 +176,12 @@
           <div class="focus-right">
             <div class="focus-card">
               <p class="focus-card-label">Focusing on</p>
-              <div class="focus-habits" id="focus-habits">
-                <div class="focus-habit selected" onclick="selectHabit(this)">
-                  <div class="focus-habit-icon">
-                    <img
-                      src="assets/icons/habits/book-open.svg"
-                      width="16"
-                      height="16"
-                      alt=""
-                    />
-                  </div>
-                  <div class="focus-habit-text">
-                    <p>Read 10 pages</p>
-                    <span>Oak · 12 day streak</span>
-                  </div>
-                </div>
-                <div class="focus-habit" onclick="selectHabit(this)">
-                  <div class="focus-habit-icon">
-                    <img
-                      src="assets/icons/habits/droplets.svg"
-                      width="16"
-                      height="16"
-                      alt=""
-                    />
-                  </div>
-                  <div class="focus-habit-text">
-                    <p>Drink 2L water</p>
-                    <span>Sprout · 4 day streak</span>
-                  </div>
-                </div>
-                <div class="focus-habit" onclick="selectHabit(this)">
-                  <div class="focus-habit-icon">
-                    <img
-                      src="assets/icons/habits/dumbbell.svg"
-                      width="16"
-                      height="16"
-                      alt=""
-                    />
-                  </div>
-                  <div class="focus-habit-text">
-                    <p>Morning workout</p>
-                    <span>Blossom · No streak</span>
-                  </div>
-                </div>
-              </div>
+              <div class="focus-habits" id="focus-habits"></div>
             </div>
 
             <div class="focus-card">
-              <p class="focus-card-label">Today's sessions</p>
-              <div class="sessions-list">
-                <div class="session-item done">
-                  <div class="session-dot"></div>
-                  <div class="session-item-text">
-                    <p>Read 10 pages</p>
-                    <span>09:15 · 25 min</span>
-                  </div>
-                </div>
-                <div class="session-item done">
-                  <div class="session-dot"></div>
-                  <div class="session-item-text">
-                    <p>Read 10 pages</p>
-                    <span>09:50 · 25 min</span>
-                  </div>
-                </div>
-                <div class="session-item active">
-                  <div class="session-dot"></div>
-                  <div class="session-item-text">
-                    <p>Read 10 pages</p>
-                    <span>In progress</span>
-                  </div>
-                </div>
-              </div>
+              <p class="focus-card-label">Completed today</p>
+              <div class="sessions-list" id="sessions-list"></div>
             </div>
 
             <div class="focus-card focus-tip">
@@ -279,6 +195,7 @@
         </div>
       </main>
     </div>
+
     <script src="js/auth.js"></script>
     <script src="js/focus.js"></script>
   </body>
