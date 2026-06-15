@@ -1,6 +1,8 @@
 <?php
 $raw = file_get_contents('php://input');
 $data = json_decode($raw, true);
+error_log("REGISTER DATA: " . print_r($data, true));
+error_log("NAME: " . ($data['name'] ?? 'EMPTY'));
 
 $name = trim($data['name'] ?? '');
 $email = trim($data['email'] ?? '');
@@ -31,8 +33,8 @@ if (strlen($password) < 6) {
     exit;
 }
 
-$stmt = $pdo->prepare('SELECT id FROM users WHERE email = $1');
-$stmt->execute([$email]);
+$stmt = $pdo->prepare('SELECT id FROM users WHERE email = :email');
+$stmt->execute([':email' => $email]);
 if ($stmt->fetch()) {
     echo json_encode(['error' => 'Email already registered']);
     exit;
@@ -42,6 +44,9 @@ $hash = password_hash($password, PASSWORD_DEFAULT);
 $stmt = $pdo->prepare('INSERT INTO users (name, email, password) VALUES (:name, :email, :password) RETURNING id');
 $stmt->execute([':name' => $name, ':email' => $email, ':password' => $hash]);
 $user = $stmt->fetch();
+
+error_log("INSERTED: " . print_r($user, true));
+error_log("NAME WAS: " . $name);
 
 $_SESSION['user_id'] = $user['id'];
 $_SESSION['user_name'] = $name;

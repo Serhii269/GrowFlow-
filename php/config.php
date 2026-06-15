@@ -10,29 +10,31 @@ header('X-XSS-Protection: 1; mode=block');
 $databaseUrl = getenv('DATABASE_URL');
 
 if ($databaseUrl) {
-    $parsed = parse_url($databaseUrl);
-    $host = $parsed['host'];
-    $port = $parsed['port'] ?? 5432;
-    $name = ltrim($parsed['path'], '/');
-    $user = $parsed['user'];
-    $pass = $parsed['pass'];
+    $dbParsed = parse_url($databaseUrl);
+    $dbHost = $dbParsed['host'];
+    $dbPort = $dbParsed['port'] ?? 5432;
+    $dbName = ltrim($dbParsed['path'], '/');
+    $dbUser = $dbParsed['user'];
+    $dbPass = $dbParsed['pass'];
 } else {
-    $host = getenv('DB_HOST') ?: 'localhost';
-    $port = getenv('DB_PORT') ?: '5432';
-    $name = getenv('DB_NAME') ?: 'growflow';
-    $user = getenv('DB_USER') ?: 'sergijpidgorodeckij';
-    $pass = getenv('DB_PASS') ?: '';
+    $dbHost = getenv('DB_HOST') ?: 'localhost';
+    $dbPort = getenv('DB_PORT') ?: '5432';
+    $dbName = getenv('DB_NAME') ?: 'growflow';
+    $dbUser = getenv('DB_USER') ?: 'sergijpidgorodeckij';
+    $dbPass = getenv('DB_PASS') ?: '';
 }
 
 try {
     $pdo = new PDO(
-        "pgsql:host={$host};port={$port};dbname={$name}",
-        $user,
-        $pass,
-        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC]
+        "pgsql:host={$dbHost};port={$dbPort};dbname={$dbName};sslmode=require",
+        $dbUser,
+        $dbPass,
+        [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+        ]
     );
 } catch (PDOException $e) {
-    die(json_encode(['error' => 'Database connection failed']));
+    die(json_encode(['error' => 'Database connection failed: ' . $e->getMessage()]));
 }
 ?>
