@@ -104,8 +104,7 @@ body {
   width: 100%;
   max-width: 544px;
   height: 408px;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   display: block;
 }
 
@@ -198,9 +197,6 @@ body {
   background: #fff;
   outline: none;
   transition: border-color 0.2s;
-}
-.auth-field input::-moz-placeholder {
-  color: #b0bcb1;
 }
 .auth-field input::placeholder {
   color: #b0bcb1;
@@ -351,4 +347,6 @@ body {
   .auth-btn {
     width: 100%;
   }
-}/*# sourceMappingURL=register.css.map */
+}
+
+/*# sourceMappingURL=register.css.map */
