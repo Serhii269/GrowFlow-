@@ -339,4 +339,52 @@
 .ai-stat span {
   font-size: 11px;
   color: #9aaa9b;
+}
+
+@media (max-width: 768px) {
+  .ai-layout {
+    grid-template-columns: 1fr;
+    height: auto;
+    gap: 16px;
+  }
+  .ai-chat {
+    height: 65vh;
+    min-height: 400px;
+  }
+  .ai-sidebar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .chat-messages {
+    padding: 16px;
+  }
+  .message-bubble {
+    max-width: 85%;
+  }
+  .chat-input-wrap {
+    padding: 12px 16px;
+  }
+  .chat-suggestions {
+    gap: 4px;
+  }
+  .suggestion-btn {
+    font-size: 11px;
+    padding: 0 10px;
+    height: 28px;
+  }
+}
+@media (max-width: 480px) {
+  .ai-sidebar {
+    grid-template-columns: 1fr;
+  }
+  .ai-chat {
+    height: 60vh;
+  }
+  .message-bubble {
+    max-width: 90%;
+  }
+  .message-bubble p {
+    font-size: 13px;
+  }
 }/*# sourceMappingURL=ai.css.map */

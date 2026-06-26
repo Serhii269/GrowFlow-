@@ -64,15 +64,17 @@
   align-items: center;
   gap: 6px;
 }
-.legend-item::before {
-  content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: block;
+.legend-item.legend-healthy {
+  color: #006d36;
 }
-.legend-item {
-  /*
+.legend-item.legend-growing {
+  color: #f59e0b;
+}
+.legend-item.legend-wilting {
+  color: #dc2626;
+}
+
+/*
   &.legend-healthy::before {
     background: #006d36;
   }
@@ -96,8 +98,6 @@
   &.legend-wilting {
     color: #dc2626;
   }*/
-}
-
 .garden-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
