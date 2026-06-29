@@ -22,40 +22,37 @@ if (!isset($_SESSION['user_id'])) {
 $userId = $_SESSION['user_id'];
 $method = $_SERVER['REQUEST_METHOD'];
 
-// RU: GET запрос — возвращаем все привычки пользователя
-// DE: GET-Anfrage — alle Gewohnheiten des Benutzers zurückgeben
+// RU: GET запрос — возвращаем все привычки одним запросом (быстро)
+// DE: GET-Anfrage — alle Gewohnheiten in einer Abfrage zurückgeben (schnell)
 if ($method === 'GET') {
-    $stmt = $pdo->prepare('SELECT * FROM habits WHERE user_id = :user_id ORDER BY created_at DESC');
+    $stmt = $pdo->prepare("
+        SELECT
+            h.*,
+            COALESCE((
+                SELECT COUNT(*) FROM habit_logs
+                WHERE habit_id = h.id
+                AND completed_at = CURRENT_DATE
+            ), 0) > 0 as done_today,
+            COALESCE((
+                SELECT COUNT(*) FROM habit_logs
+                WHERE habit_id = h.id
+            ), 0) as total_completions,
+            (
+                SELECT MAX(completed_at) FROM habit_logs
+                WHERE habit_id = h.id
+            ) as last_completed,
+            get_streak(h.id) as streak
+        FROM habits h
+        WHERE h.user_id = :user_id
+        ORDER BY h.created_at DESC
+    ");
     $stmt->execute([':user_id' => $userId]);
     $habits = $stmt->fetchAll();
 
     foreach ($habits as &$habit) {
-        $today = date('Y-m-d');
-
-        // RU: Проверяем выполнена ли привычка сегодня
-        // DE: Prüfen ob die Gewohnheit heute erledigt wurde
-        $logStmt = $pdo->prepare('SELECT COUNT(*) as cnt FROM habit_logs WHERE habit_id = :id AND completed_at = :today');
-        $logStmt->execute([':id' => $habit['id'], ':today' => $today]);
-        $habit['done_today'] = $logStmt->fetch()['cnt'] > 0;
-
-        // RU: Считаем общее количество выполнений
-        // DE: Gesamtanzahl der Erledigungen zählen
-        $totalStmt = $pdo->prepare('SELECT COUNT(*) as cnt FROM habit_logs WHERE habit_id = :id');
-        $totalStmt->execute([':id' => $habit['id']]);
-        $habit['total_completions'] = (int)$totalStmt->fetch()['cnt'];
-
-        // RU: Берём дату последнего выполнения
-        // DE: Datum der letzten Erledigung holen
-        $lastStmt = $pdo->prepare('SELECT MAX(completed_at) as last FROM habit_logs WHERE habit_id = :id');
-        $lastStmt->execute([':id' => $habit['id']]);
-        $habit['last_completed'] = $lastStmt->fetch()['last'];
-
-        // RU: Вызываем PostgreSQL функцию для подсчёта streak (серии дней подряд)
-        // DE: PostgreSQL-Funktion aufrufen um die Streak (aufeinanderfolgende Tage) zu berechnen
-        $streakStmt = $pdo->prepare('SELECT get_streak(:id) as streak');
-        $streakStmt->execute([':id' => $habit['id']]);
-        $row = $streakStmt->fetch();
-        $habit['streak'] = (int)($row['streak'] ?? 0);
+        $habit['done_today'] = (bool)$habit['done_today'];
+        $habit['total_completions'] = (int)$habit['total_completions'];
+        $habit['streak'] = (int)$habit['streak'];
 
         // RU: Получаем подцели для каждой привычки
         // DE: Teilziele für jede Gewohnheit holen
